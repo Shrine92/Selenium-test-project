@@ -37,60 +37,14 @@ namespace CreditCards.UITests
             using (IWebDriver driver = new ChromeDriver())
             {
                 // Arrange
-                driver.Navigate().GoToUrl(HomeUrl);
-                var applyLink = driver.FindElement(By.Name("ApplyLowRate"));
+                var homePage = new HomePage(driver);
+                homePage.NavigateTo();
 
                 // Act
-                applyLink.Click();
+                var applicationPage = homePage.ClickApplyLowRateLink();
 
                 // Assert
-                Assert.Equal(ApplyUrl, driver.Url);
-            }
-        }
-
-        [Fact]
-        public void BeInitiatedFromHomePage_NewEasyApplication()
-        {
-            using (IWebDriver driver = new ChromeDriver())
-            {
-                // Arrange
-                driver.Navigate().GoToUrl(HomeUrl);
-                DemoHelper.Pause();
-                var rightCarouselLink = driver.FindElement(By.CssSelector("[data-slide='next']"));
-                rightCarouselLink.Click();
-                DemoHelper.Pause();
-                var applyLink = driver.FindElement(By.LinkText("Easy: Apply Now!"));
-
-                // Act
-                applyLink.Click();
-                DemoHelper.Pause();
-
-                // Assert
-                Assert.Equal(ApplyUrl, driver.Url);
-            }
-        }
-
-        [Fact]
-        public void BeInitiatedFromHomePage_NewEasyApplication_WithWait()
-        {
-            using (IWebDriver driver = new ChromeDriver())
-            {
-                // Arrange
-                driver.Navigate().GoToUrl(HomeUrl);
-                DemoHelper.Pause();
-                var rightCarouselLink = driver.FindElement(By.CssSelector("[data-slide='next']"));
-                rightCarouselLink.Click();
-
-                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(1));
-
-                var applyLink = wait.Until(d => d.FindElement(By.LinkText("Easy: Apply Now!")));
-
-                // Act
-                applyLink.Click();
-                DemoHelper.Pause();
-
-                // Assert
-                Assert.Equal(ApplyUrl, driver.Url);
+                applicationPage.EnsurePageLoaded();
             }
         }
 
@@ -100,20 +54,16 @@ namespace CreditCards.UITests
             using (IWebDriver driver = new ChromeDriver())
             {
                 // Arrange
-                driver.Navigate().GoToUrl(HomeUrl);
-                driver.Manage().Window.Minimize();
-                DemoHelper.Pause();
+                var homePage = new HomePage(driver);
+                homePage.NavigateTo();
 
-                var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(11));
-
-                var applyLink = wait.Until(ElementToBeClickable(By.LinkText("Easy: Apply Now!")));
+                homePage.WaitForEasyApplicationCarouselPage();
 
                 // Act
-                applyLink.Click();
-                DemoHelper.Pause();
+                var applicationPage = homePage.ClickApplyNowLink();
 
                 // Assert
-                Assert.Equal(ApplyUrl, driver.Url);
+                applicationPage.EnsurePageLoaded();
             }
         }
 
