@@ -1,6 +1,4 @@
 ﻿using CreditCards.UITests.PageObjectModels;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using Xunit;
 
 namespace CreditCards.UITests

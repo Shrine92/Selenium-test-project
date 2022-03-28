@@ -100,6 +100,7 @@
     <Compile Include="PageObjectModels\ApplicationCompletePage.cs" />
     <Compile Include="PageObjectModels\ApplicationPage.cs" />
     <Compile Include="PageObjectModels\HomePage.cs" />
+    <Compile Include="PageObjectModels\Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
