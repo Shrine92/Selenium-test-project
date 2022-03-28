@@ -25,7 +25,7 @@ namespace CreditCards.UITests.PageObjectModels
         {
             _driver.FindElement(By.Id("SubmitApplication")).Click();
             return new ApplicationCompletePage(_driver);
-        } 
+        }
 
         public void EnterFirstName(string firstName = "Sarah") 
             => SendKeys("FirstName" , firstName);

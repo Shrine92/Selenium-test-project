@@ -28,7 +28,7 @@ namespace CreditCards.UITests
 
         public CreditCardApplicationShouldPagePattern(ITestOutputHelper output)
         {
-            this._output = output;
+            _output = output;
         }
 
         [Fact]

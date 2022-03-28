@@ -1,4 +1,8 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
+#pragma warning disable CS0618 // Type or member is obsolete
+using static OpenQA.Selenium.Support.PageObjects.PageFactory;
+#pragma warning restore CS0618 // Type or member is obsolete
 
 namespace CreditCards.UITests.PageObjectModels
 {
@@ -7,12 +11,16 @@ namespace CreditCards.UITests.PageObjectModels
         public ApplicationCompletePage(IWebDriver driver)
         {
             _driver = driver;
+            InitElements(driver, this);
         }
 
         protected override string PageUrl => "http://localhost:44108/Apply";
         protected override string PageTitle => "Application Complete - Credit Cards";
 
-        public string Decision => _driver.FindElement(By.Id("Decision")).Text;
+        [FindsBy(How = How.Id, Using = "Decision")]
+        private IWebElement ApplicationDecision { get; set; }
+
+        public string Decision => ApplicationDecision.Text;
         public string ReferenceNumber => _driver.FindElement(By.Id("ReferenceNumber")).Text;
         public string FullName => _driver.FindElement(By.Id("FullName")).Text;
         public string Age => _driver.FindElement(By.Id("Age")).Text;

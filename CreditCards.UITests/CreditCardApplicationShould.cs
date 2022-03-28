@@ -27,7 +27,7 @@ namespace CreditCards.UITests
 
         public CreditCardApplicationShould(ITestOutputHelper output)
         {
-            this._output = output;
+            _output = output;
         }
 
         [Fact]
