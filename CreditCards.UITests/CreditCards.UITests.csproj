@@ -90,12 +90,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChromeDriverFixture.cs" />
     <Compile Include="CreditCardApplicationShouldPagePattern.cs" />
     <Compile Include="CreditCardApplicationShould.cs" />
     <Compile Include="CreditCardWebAppShouldPagePattern.cs" />
     <Compile Include="CreditCardWebAppShould.cs" />
     <Compile Include="DemoHelper.cs" />
     <Compile Include="JavaScriptExamples.cs" />
+    <Compile Include="PageObjectModels\ApplicationCompletePage.cs" />
     <Compile Include="PageObjectModels\ApplicationPage.cs" />
     <Compile Include="PageObjectModels\HomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
